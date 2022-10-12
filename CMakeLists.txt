@@ -8,6 +8,13 @@ else(WIN32)
 endif(WIN32)
 
 #
+# Since CMake 3.0 the project() command manages the version.
+#
+if(POLICY CMP0048)
+    cmake_policy(SET CMP0048 OLD)
+endif()
+
+#
 # Apple doesn't build with an install_name starting with @rpath, and
 # neither do we with autotools; don't do so with CMake, either, and
 # suppress warnings about that.
