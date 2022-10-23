@@ -498,6 +498,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     option(BUILD_WITH_LIBNL "Build with libnl" ON)
 endif()
 
+option(LIBPCAP_BUILD_TESTS "Build tests" OFF)
+
 #
 # Additional capture modules.
 #
@@ -2766,7 +2768,10 @@ endif(WIN32)
 if(ENABLE_REMOTE)
     add_subdirectory(rpcapd)
 endif(ENABLE_REMOTE)
-add_subdirectory(testprogs)
+
+if(LIBPCAP_BUILD_TESTS)
+    add_subdirectory(testprogs)
+endif()
 
 ######################################
 # Register targets
